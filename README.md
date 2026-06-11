@@ -11,6 +11,7 @@ A end-to-end testing demo project built with **Playwright**, **TypeScript**, and
 | App server | Node.js + Express |
 | Language | TypeScript |
 | Testing | Playwright Test |
+| Browsers | Chromium, Pixel 5 (mobile), iPhone 12 (mobile) |
 | CI/CD | GitHub Actions |
 
 ---
@@ -96,6 +97,20 @@ Uses the **Page Object Model** pattern via `KiroAppPage` to keep tests readable 
 | Empty input | No greeting shown for blank submission |
 | Update greeting | Greeting updates on re-submission |
 | Whitespace input | Whitespace-only input treated as empty |
+
+### Mobile Emulation Tests (`tests/mobile.spec.ts`)
+
+Runs on **Pixel 5** and **iPhone 12** emulated viewports to verify the app works correctly on mobile devices.
+
+| Test | Description |
+|---|---|
+| Heading visible | Main heading renders on mobile viewport |
+| Input & button visible | Form elements are accessible on small screens |
+| Tap to submit | Greeting appears after tapping submit |
+| Empty input on mobile | No greeting shown for blank tap submission |
+| Re-submission on mobile | Greeting updates correctly on mobile |
+| Input focused on tap | Input field is focused when tapped |
+| No horizontal scroll | Content fits within mobile viewport width |
 
 ### API Tests (`tests/api.spec.ts`)
 

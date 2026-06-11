@@ -11,9 +11,21 @@ export default defineConfig({
     trace: 'on',
   },
   projects: [
+    // Desktop — runs UI and API tests only
     {
       name: 'chromium',
+      testIgnore: '**/mobile.spec.ts',
       use: { ...devices['Desktop Chrome'] },
+    },
+
+    // Mobile emulation — runs all tests including mobile-specific ones
+    {
+      name: 'Mobile Chrome - Pixel 5',
+      use: { ...devices['Pixel 5'] },
+    },
+    {
+      name: 'Mobile Chrome - iPhone 12',
+      use: { ...devices['iPhone 12'], defaultBrowserType: 'chromium' },
     },
   ],
   webServer: {
