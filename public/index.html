@@ -58,17 +58,33 @@
       color: #4f46e5;
       min-height: 2rem;
     }
+
+    /* Visually hidden but accessible to screen readers */
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
   </style>
 </head>
 <body>
-  <h1>Welcome to Kiro App</h1>
+  <main>
+    <h1 data-testid="main-heading">Welcome to Kiro App</h1>
 
-  <div class="form">
-    <input type="text" id="name-input" data-testid="name-input" placeholder="Enter your name" />
-    <button id="submit-btn" data-testid="submit-btn">Submit</button>
-  </div>
+    <div class="form">
+      <label for="name-input" class="visually-hidden">Your name</label>
+      <input type="text" id="name-input" data-testid="name-input" placeholder="Enter your name" aria-label="Your name" />
+      <button id="submit-btn" data-testid="submit-btn">Submit</button>
+    </div>
 
-  <p id="greeting-output" data-testid="greeting-output"></p>
+    <p id="greeting-output" data-testid="greeting-output" aria-live="polite"></p>
+  </main>
 
   <script>
     const submitBtn = document.getElementById('submit-btn');

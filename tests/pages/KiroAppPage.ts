@@ -13,7 +13,7 @@ export class KiroAppPage {
 
   constructor(page: Page) {
     this.page = page;
-    this.heading = page.locator('h1');
+    this.heading = page.getByTestId('main-heading');
     this.nameInput = page.getByTestId('name-input');
     this.submitBtn = page.getByTestId('submit-btn');
     this.greetingOutput = page.getByTestId('greeting-output');
