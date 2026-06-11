@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiro App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 480px;
+      margin: 80px auto;
+      padding: 0 16px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 32px;
+      color: #1a1a1a;
+    }
+
+    .form {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 10px 14px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    input[type="text"]:focus {
+      border-color: #4f46e5;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #4f46e5;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #4338ca;
+    }
+
+    #greeting {
+      margin-top: 32px;
+      font-size: 1.5rem;
+      color: #4f46e5;
+      min-height: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Kiro App</h1>
+
+  <div class="form">
+    <input type="text" id="name-input" data-testid="name-input" placeholder="Enter your name" />
+    <button id="submit-btn" data-testid="submit-btn">Submit</button>
+  </div>
+
+  <p id="greeting-output" data-testid="greeting-output"></p>
+
+  <script>
+    const submitBtn = document.getElementById('submit-btn');
+    const nameInput = document.getElementById('name-input');
+    const greeting = document.getElementById('greeting-output');
+
+    submitBtn.addEventListener('click', () => {
+      const name = nameInput.value.trim();
+      greeting.textContent = name ? `Hello, ${name}!` : '';
+    });
+
+    // Also trigger on Enter key
+    nameInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') submitBtn.click();
+    });
+  </script>
+</body>
+</html>
