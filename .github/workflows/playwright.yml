@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Install dependencies
         run: npm ci
@@ -25,7 +25,10 @@ jobs:
         run: npm run build
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium firefox
+
+      - name: Update visual snapshots
+        run: npx playwright test --project=chromium tests/visual.spec.ts --update-snapshots
 
       - name: Run Playwright tests
         run: npx playwright test
